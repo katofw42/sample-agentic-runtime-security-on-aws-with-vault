@@ -50,6 +50,6 @@ output "cluster_version" {
 }
 
 output "oidc_provider_arn" {
-  description = "ARN of the IAM OIDC provider associated with the EKS cluster (consumed by addons component for IRSA-style role trust where Pod Identity isn't applicable)"
+  description = "ARN of the IAM OIDC provider associated with the EKS cluster. Empty when enable_irsa = false (the workshop default — Pod Identity, no iam:CreateOpenIDConnectProvider). Kept for backwards compatibility."
   value       = module.eks.oidc_provider_arn
 }

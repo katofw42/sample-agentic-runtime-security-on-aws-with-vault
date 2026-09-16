@@ -19,7 +19,7 @@ CONTEXT.md ([Phase 2 context](../../../.planning/phases/02-foundation-infrastruc
 
 - **3 external addons enabled** — cert-manager, external-dns, AWS Load Balancer Controller. Front-loaded in Phase 2.
 - **Helm provider pinned `~> 2.17`** — Pitfall H1; do NOT bump to 3.x. The `aws-ia/eks-blueprints-addons` module's `helm_release` shape is incompatible with helm provider 3.x as of pin time.
-- **Pod Identity vs IRSA** — accept the pinned `eks-blueprints-addons` v1.x module's defaults. Per RESEARCH Open Question 2/3, that version installs the 3 external addons via **IRSA** (consumes `oidc_provider_arn`). CONTEXT's "Pod Identity for cluster addons" decision applies to MANAGED addons (vpc-cni, ebs-csi) which are owned by the `eks` module — external addons inherit module defaults.
+- **Pod Identity vs IRSA** — AWS Load Balancer Controller uses **EKS Pod Identity** (`terraform-aws-modules/eks-pod-identity` + `create_role = false` on the blueprints addon). The EKS module sets `enable_irsa = false`, so there is no IAM OIDC provider and IRSA cannot be used. This matches the managed-addon pattern (`vpc-cni`, `ebs-csi`) and avoids `iam:CreateOpenIDConnectProvider`.
 - **cert-manager** ships with the default `selfsigned` ClusterIssuer; **Vault PKI integration is deferred to Phase 3+**.
 - **Karpenter is OUT of scope** — `enable_karpenter = false`. Cluster runs with managed node group only (per project [CLAUDE.md](../../../CLAUDE.md)).
 - **ArgoCD is OUT of scope** — `enable_argocd = false`. Deploys are Helm-direct or via local Terraform (per project [CLAUDE.md](../../../CLAUDE.md)).
@@ -33,7 +33,6 @@ CONTEXT.md ([Phase 2 context](../../../.planning/phases/02-foundation-infrastruc
 | `cluster_name`      | `string`      | _(required)_ | EKS cluster name — wired from `module.eks.cluster_name`.                                                     |
 | `cluster_endpoint`  | `string`      | _(required)_ | EKS API server endpoint — wired from `module.eks.cluster_endpoint`.                                          |
 | `cluster_version`   | `string`      | _(required)_ | Kubernetes version — wired from `module.eks.cluster_version`. Gates addon chart-version selection.           |
-| `oidc_provider_arn` | `string`      | _(required)_ | IRSA OIDC provider ARN — wired from `module.eks.oidc_provider_arn`.                                          |
 | `tags`              | `map(string)` | `{}`         | Tags applied to all resources.                                                                               |
 
 ## Outputs
@@ -56,12 +55,11 @@ module "addons" {
 
   depends_on = [module.eks]
 
-  region            = var.region
-  cluster_name      = module.eks.cluster_name
-  cluster_endpoint  = module.eks.cluster_endpoint
-  cluster_version   = module.eks.cluster_version
-  oidc_provider_arn = module.eks.oidc_provider_arn
-  tags              = var.tags
+  region           = var.region
+  cluster_name     = module.eks.cluster_name
+  cluster_endpoint = module.eks.cluster_endpoint
+  cluster_version  = module.eks.cluster_version
+  tags             = var.tags
 }
 ```
 
@@ -76,6 +74,8 @@ The `helm` provider is pinned `~> 2.17`. The `aws-ia/eks-blueprints-addons` modu
 ## References
 
 - [`aws-ia/eks-blueprints-addons` — module docs](https://registry.terraform.io/modules/aws-ia/eks-blueprints-addons/aws/latest)
+- [`terraform-aws-modules/eks-pod-identity/aws` — module docs](https://registry.terraform.io/modules/terraform-aws-modules/eks-pod-identity/aws/latest)
+- [Amazon EKS Pod Identity user guide](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html)
 - [cert-manager](https://cert-manager.io/)
 - [external-dns](https://kubernetes-sigs.github.io/external-dns/)
 - [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/)

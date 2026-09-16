@@ -22,11 +22,6 @@ variable "cluster_version" {
   type        = string
 }
 
-variable "oidc_provider_arn" {
-  description = "OIDC provider ARN for IRSA-bound addons (cert-manager, external-dns, AWS Load Balancer Controller) — wired from component.eks.oidc_provider_arn."
-  type        = string
-}
-
 variable "tags" {
   description = "Tags applied to all resources created by the eks-blueprints-addons module."
   type        = map(string)

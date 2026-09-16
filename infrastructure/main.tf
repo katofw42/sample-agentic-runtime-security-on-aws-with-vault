@@ -224,12 +224,11 @@ module "rds" {
 module "addons" {
   source = "./modules/addons"
 
-  region            = var.region
-  cluster_name      = module.eks.cluster_name
-  cluster_endpoint  = module.eks.cluster_endpoint
-  cluster_version   = module.eks.cluster_version
-  oidc_provider_arn = module.eks.oidc_provider_arn
-  tags              = var.tags
+  region           = var.region
+  cluster_name     = module.eks.cluster_name
+  cluster_endpoint = module.eks.cluster_endpoint
+  cluster_version  = module.eks.cluster_version
+  tags             = var.tags
   # Plan 03 cert-manager ClusterIssuer consumes acme_email in spec.acme.email.
   # No default per CLAUDE.md identity-defaults rule.
   acme_email = var.acme_email

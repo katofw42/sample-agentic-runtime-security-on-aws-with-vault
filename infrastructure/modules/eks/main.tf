@@ -71,6 +71,12 @@ module "eks" {
   create_kms_key            = false
   cluster_encryption_config = {}
 
+  # Skip the IAM OIDC provider (iam:CreateOpenIDConnectProvider). This workshop
+  # uses EKS Pod Identity for every addon that needs AWS credentials, including
+  # AWS Load Balancer Controller in modules/addons. Restricted deployer roles
+  # often deny CreateOpenIDConnectProvider; IRSA would also be unused.
+  enable_irsa = false
+
   # EKS Access Entries — replaces legacy aws-auth ConfigMap (CONTEXT decision).
   # Creator admin permissions ensure the HCP-deploy role is admin during apply
   # (Pitfall E3 — persists post-apply; documented in README).

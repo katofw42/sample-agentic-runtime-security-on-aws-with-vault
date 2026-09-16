@@ -32,7 +32,7 @@ ALB controller, cert-manager, and external-dns.
 | API endpoint access                              | Public + private (Workshop Studio: public CIDR `0.0.0.0/0`)                                    |
 | Authentication mode                              | **EKS Access Entries** (replaces legacy `aws-auth` ConfigMap)                                  |
 | K8s Secrets envelope encryption                  | AWS-managed key `aws/eks` — **NOT** customer-managed CMK (Vault is the credential broker)      |
-| Pod IAM strategy                                 | **EKS Pod Identity** (NOT IRSA) — managed addons that need IAM use `pod_identity_association`  |
+| Pod IAM strategy                                 | **EKS Pod Identity** (NOT IRSA) — `enable_irsa = false` so no IAM OIDC provider is created (`iam:CreateOpenIDConnectProvider`). Managed addons that need IAM use `pod_identity_association`; AWS Load Balancer Controller is bound the same way in the `addons` module. |
 | GitOps controller                                | None — **ArgoCD is OUT of scope**                                                              |
 
 The K8s Secrets decision is worth re-stating: in this architecture Vault is
@@ -60,7 +60,8 @@ CMK (Plan 02-04), and OpenSearch / CloudWatch CMK reuse (Plan 02-05).
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | `cluster_name`                       | EKS cluster name                                                                                                         |
 | `cluster_endpoint`                   | EKS API server endpoint                                                                                                  |
-| `cluster_oidc_issuer`                | OIDC issuer URL (kept for backwards compat — Pod Identity is preferred over IRSA in this workshop)                       |
+| `cluster_oidc_issuer`                | Cluster OIDC issuer URL (Kubernetes SA tokens / Vault Kubernetes auth — not an IAM OIDC provider)                        |
+| `oidc_provider_arn`                  | IAM OIDC provider ARN; empty because `enable_irsa = false`                                                               |
 | `cluster_security_group_id`          | Control plane security group ID                                                                                          |
 | `cluster_certificate_authority_data` | Base64-encoded CA bundle (consumed by `kubernetes`/`helm` provider configs in `providers.tf`)                            |
 | `node_security_group_id`             | Managed node group security group ID                                                                                     |

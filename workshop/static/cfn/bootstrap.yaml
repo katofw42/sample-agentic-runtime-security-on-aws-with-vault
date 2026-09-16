@@ -140,7 +140,7 @@ Resources:
                 Resource: "*"
               - Sid: Tier1IamManagement
                 # Tier-1 Terraform creates IAM roles (fluent-bit, firehose, vault-kms,
-                # bedrock-kb, IRSA roles, etc.). IAM management actions are required.
+                # bedrock-kb, Pod Identity roles, etc.). IAM management actions are required.
                 # PowerUserAccess denies all iam:* — this statement bridges that gap.
                 # Scoped to management CRUD actions only; NOT iam:* (which would be Admin).
                 Effect: Allow

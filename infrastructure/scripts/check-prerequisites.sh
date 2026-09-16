@@ -757,23 +757,14 @@ elif confirm "Run IAM permissions check (iam:SimulatePrincipalPolicy)?"; then
             echo
 
             # Step 4 — required actions
-            # Two actions are intentionally NOT simulated here, because the
-            # IAM policy simulator produces unreliable results for them and
-            # the eks-terraform-stacks reference workshop (which uses the
-            # exact same OIDC + role bootstrap flow) does not preflight them:
+            # Two actions are intentionally NOT simulated here:
             #
-            #   - iam:CreateOpenIDConnectProvider — needed for EKS IRSA; some
-            #     scoped roles grant this only with a specific Resource ARN
-            #     pattern, making simulate-principal-policy return implicitDeny
-            #     even when the actual create call succeeds (SCP/inline
-            #     evaluation interaction the simulator cannot model). The EKS
-            #     module will surface a clear error if the permission is
-            #     genuinely absent.
+            #   - iam:CreateOpenIDConnectProvider — unused. The EKS module sets
+            #     enable_irsa = false and addons bind IAM via Pod Identity, so
+            #     no IAM OIDC provider is created.
             #
-            #   - sts:AssumeRoleWithWebIdentity — invoked by EKS IRSA service
-            #     accounts at pod startup, not by the local caller. The trust
-            #     policy of the IAM role governs whether the OIDC provider can
-            #     issue it. Local-caller simulation produces a false deny.
+            #   - sts:AssumeRoleWithWebIdentity — IRSA-only. Pod Identity uses
+            #     sts:AssumeRole + sts:TagSession against pods.eks.amazonaws.com.
             REQUIRED_ACTIONS=(
                 iam:CreateRole
                 iam:AttachRolePolicy

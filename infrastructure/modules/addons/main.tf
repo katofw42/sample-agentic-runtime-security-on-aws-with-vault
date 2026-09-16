@@ -16,11 +16,10 @@
 # `aws-ia/eks-blueprints-addons` module's helm_release shape is incompatible
 # with helm provider 3.x as of pin time.
 #
-# Pod Identity vs IRSA: the pinned eks-blueprints-addons v1.x module installs
-# these external addons via IRSA (uses `oidc_provider_arn`). CONTEXT's
-# "Pod Identity for cluster addons" decision applies to MANAGED addons
-# (vpc-cni, ebs-csi) which are owned by the `eks` module (Plan 02-03). External
-# addons inherit module defaults — IRSA is acceptable here.
+# Pod Identity vs IRSA: eks-blueprints-addons v1.x defaults to IRSA for LBC
+# (consumes oidc_provider_arn). The EKS module sets enable_irsa = false, so
+# there is no IAM OIDC provider. LBC is therefore bound via Pod Identity
+# below (create_role = false + eks-pod-identity association).
 ################################################################################
 
 terraform {
@@ -48,6 +47,35 @@ terraform {
   }
 }
 
+# AWS Load Balancer Controller IAM via Pod Identity (NOT IRSA).
+# The association is name-based and resolves lazily when the LBC ServiceAccount
+# starts — same pattern as vault_iam. The 30s barrier below lets the admission
+# webhook observe the association before LBC pods are admitted (mirrors
+# fluent-bit in modules/observability).
+module "aws_lbc_pod_identity" {
+  source  = "terraform-aws-modules/eks-pod-identity/aws"
+  version = "= 1.12.1"
+
+  name                            = "${var.cluster_name}-aws-lbc"
+  attach_aws_lb_controller_policy = true
+
+  associations = {
+    controller = {
+      cluster_name    = var.cluster_name
+      namespace       = "kube-system"
+      service_account = "aws-load-balancer-controller"
+    }
+  }
+
+  tags = var.tags
+}
+
+resource "time_sleep" "aws_lbc_pod_identity_propagate" {
+  create_duration = "30s"
+
+  depends_on = [module.aws_lbc_pod_identity]
+}
+
 module "eks_blueprints_addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
   version = "= 1.23.0"
@@ -55,7 +83,7 @@ module "eks_blueprints_addons" {
   cluster_name      = var.cluster_name
   cluster_endpoint  = var.cluster_endpoint
   cluster_version   = var.cluster_version
-  oidc_provider_arn = var.oidc_provider_arn
+  oidc_provider_arn = "" # unused — LBC uses Pod Identity, not IRSA
 
   # ---------------------------------------------------------------------------
   # External addons (CONTEXT.md heavy-baseline override)
@@ -67,12 +95,19 @@ module "eks_blueprints_addons" {
   enable_external_dns = false
 
   # AWS Load Balancer Controller — provisions ALBs from Kubernetes Ingress.
+  # create_role = false skips the module's IRSA role (needs an IAM OIDC
+  # provider that this workshop does not create).
   enable_aws_load_balancer_controller = true
+  aws_load_balancer_controller = {
+    create_role = false
+  }
 
   enable_karpenter = false
   enable_argocd    = false
 
   tags = var.tags
+
+  depends_on = [time_sleep.aws_lbc_pod_identity_propagate]
 }
 
 resource "time_sleep" "lbc_webhook_ready" {
