@@ -1,0 +1,4 @@
+{
+  "description": "A hands-on AWS workshop on securing agentic AI at runtime. Deploy an EKS banking assistant where every agent action is gated by identity, not static secrets. Three use cases: a RAG agent pulling just-in-time Vault DB/STS credentials (Bedrock Nova Pro + Knowledge Base); OAuth/PKCE user access with row-level data isolation via IBM Verify Identity Access; and a privileged refund requiring CIBA mobile-push approval, audited across three planes (approval, auth, DB write) on one shared request ID.",
+  "title": "Agentic Runtime security on AWS"
+}

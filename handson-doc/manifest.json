@@ -1,0 +1,326 @@
+{
+  "contentGuideId": "9d6a0b3d-9ea2-47a2-8ca4-40168cadd531",
+  "defaultLocaleCode": "en-US",
+  "version": 2,
+  "localeCodes": {
+    "en-US": {
+      "languageName": "English",
+      "weight": 1
+    }
+  },
+  "content": {
+    "en-US": {
+      "id": "7846777d-66d0-4542-aba0-25dc024a0618",
+      "path": "/",
+      "resource": "/content/index.en.md",
+      "title": "Agentic Runtime Security on AWS",
+      "navigation": [
+        {
+          "id": "fd5e4a93-7eb8-4330-8cbb-25bc884fa4bb",
+          "path": "/10-introduction",
+          "resource": "/content/10-introduction/index.en.md",
+          "title": "Introduction",
+          "navigation": [
+            {
+              "id": "6d72ae30-ce66-4a6f-81ce-d5a59d9769f2",
+              "path": "/10-introduction/11-five-control-objectives",
+              "resource": "/content/10-introduction/11-five-control-objectives/index.en.md",
+              "title": "Five Control Objectives",
+              "navigation": []
+            },
+            {
+              "id": "b15492fa-d54f-42f2-a554-ca4473545809",
+              "path": "/10-introduction/12-architecture",
+              "resource": "/content/10-introduction/12-architecture/index.en.md",
+              "title": "Architecture",
+              "navigation": []
+            },
+            {
+              "id": "89852e2f-b6fe-41de-91dd-b67968f9702f",
+              "path": "/10-introduction/13-audience-and-scope",
+              "resource": "/content/10-introduction/13-audience-and-scope/index.en.md",
+              "title": "Audience and Scope",
+              "navigation": []
+            }
+          ]
+        },
+        {
+          "id": "2c06e191-f3d2-416f-ad6b-37b2ab3dcee7",
+          "path": "/20-prerequisites",
+          "resource": "/content/20-prerequisites/index.en.md",
+          "title": "Prerequisites",
+          "navigation": [
+            {
+              "id": "f48f226a-1a77-47e1-a0c6-76dab365e1a8",
+              "path": "/20-prerequisites/21-at-an-event",
+              "resource": "/content/20-prerequisites/21-at-an-event/index.en.md",
+              "title": "At an Event",
+              "navigation": []
+            },
+            {
+              "id": "0ed20bae-fea5-4e42-a9b4-3aa118640214",
+              "path": "/20-prerequisites/21-aws-account",
+              "resource": "/content/20-prerequisites/21-aws-account/index.en.md",
+              "title": "Self-paced AWS Account",
+              "navigation": []
+            },
+            {
+              "id": "ca928cf7-4c3b-4001-9074-5fc9367b0e23",
+              "path": "/20-prerequisites/21-cost-estimate",
+              "resource": "/content/20-prerequisites/21-cost-estimate/index.en.md",
+              "title": "What It Costs",
+              "navigation": []
+            },
+            {
+              "id": "767bf691-3c87-4c4d-bfbd-dfda64fcce20",
+              "path": "/20-prerequisites/22-ivia-licensing",
+              "resource": "/content/20-prerequisites/22-ivia-licensing/index.en.md",
+              "title": "IVIA Licensing",
+              "navigation": []
+            },
+            {
+              "id": "91298b21-b462-47a5-a7f8-03a38b8a81b7",
+              "path": "/20-prerequisites/23-pre-flight-checks",
+              "resource": "/content/20-prerequisites/23-pre-flight-checks/index.en.md",
+              "title": "Run Pre-flight Checks",
+              "navigation": []
+            }
+          ]
+        },
+        {
+          "id": "4b9c7eaa-4a59-4967-b980-03412c6dfb80",
+          "path": "/30-deploy-foundation",
+          "resource": "/content/30-deploy-foundation/index.en.md",
+          "title": "Deploy Foundation",
+          "navigation": [
+            {
+              "id": "583e7f19-1e19-44db-8833-05aa7c3aa977",
+              "path": "/30-deploy-foundation/31-deploy-at-an-event",
+              "resource": "/content/30-deploy-foundation/31-deploy-at-an-event/index.en.md",
+              "title": "Deploy — At an Event",
+              "navigation": []
+            },
+            {
+              "id": "7f5df555-463e-49f4-8f38-078b60230bcf",
+              "path": "/30-deploy-foundation/31-deploy-self-paced",
+              "resource": "/content/30-deploy-foundation/31-deploy-self-paced/index.en.md",
+              "title": "Deploy — Self-paced",
+              "navigation": []
+            },
+            {
+              "id": "640ffed4-dfe7-4407-a1f8-cb782a88d172",
+              "path": "/30-deploy-foundation/32-configure-kubectl",
+              "resource": "/content/30-deploy-foundation/32-configure-kubectl/index.en.md",
+              "title": "Configure kubectl",
+              "navigation": []
+            },
+            {
+              "id": "d996021b-0e19-4797-80d4-ea3c02b18bee",
+              "path": "/30-deploy-foundation/33-verify-deployment",
+              "resource": "/content/30-deploy-foundation/33-verify-deployment/index.en.md",
+              "title": "Verify Deployment",
+              "navigation": [
+                {
+                  "id": "db91e1c9-6d44-4506-8a4c-a2337d5d428c",
+                  "path": "/30-deploy-foundation/33-verify-deployment/331-verify-infrastructure",
+                  "resource": "/content/30-deploy-foundation/33-verify-deployment/331-verify-infrastructure/index.en.md",
+                  "title": "Verify Infrastructure",
+                  "navigation": []
+                },
+                {
+                  "id": "755df931-09e2-408d-9f08-aeb90bbe5ca7",
+                  "path": "/30-deploy-foundation/33-verify-deployment/332-ingest-knowledge-base",
+                  "resource": "/content/30-deploy-foundation/33-verify-deployment/332-ingest-knowledge-base/index.en.md",
+                  "title": "Ingest Knowledge Base",
+                  "navigation": []
+                },
+                {
+                  "id": "46771773-c165-4356-aae1-38ea84eb36af",
+                  "path": "/30-deploy-foundation/33-verify-deployment/333-verify-vault",
+                  "resource": "/content/30-deploy-foundation/33-verify-deployment/333-verify-vault/index.en.md",
+                  "title": "Validate Vault",
+                  "navigation": []
+                },
+                {
+                  "id": "9e245fb5-77e0-491d-abb0-0defc37fc8bb",
+                  "path": "/30-deploy-foundation/33-verify-deployment/334-verify-identity-access",
+                  "resource": "/content/30-deploy-foundation/33-verify-deployment/334-verify-identity-access/index.en.md",
+                  "title": "Validate Identity Access",
+                  "navigation": []
+                },
+                {
+                  "id": "e74715a8-6fd5-49ec-a5b2-dbc58858aa04",
+                  "path": "/30-deploy-foundation/33-verify-deployment/335-oidc-seam",
+                  "resource": "/content/30-deploy-foundation/33-verify-deployment/335-oidc-seam/index.en.md",
+                  "title": "The OIDC Seam",
+                  "navigation": []
+                },
+                {
+                  "id": "870d57f4-46f1-4f41-81e4-44a5804fca44",
+                  "path": "/30-deploy-foundation/33-verify-deployment/336-platform-health-check",
+                  "resource": "/content/30-deploy-foundation/33-verify-deployment/336-platform-health-check/index.en.md",
+                  "title": "Platform Health Check",
+                  "navigation": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7a6dcf31-cbf8-4185-a616-40de69b133e4",
+          "path": "/50-use-case-1",
+          "resource": "/content/50-use-case-1/index.en.md",
+          "title": "Use Case 1 — Non-Personalized Read-Only",
+          "navigation": [
+            {
+              "id": "baa74bae-88e7-4baa-8918-9d591554c30c",
+              "path": "/50-use-case-1/50-request-flow",
+              "resource": "/content/50-use-case-1/50-request-flow/index.en.md",
+              "title": "Request Flow",
+              "navigation": []
+            },
+            {
+              "id": "ca6eae47-640b-4a56-aa3a-06344e7cf4f6",
+              "path": "/50-use-case-1/51-configure-vault-auth",
+              "resource": "/content/50-use-case-1/51-configure-vault-auth/index.en.md",
+              "title": "Configure Vault Auth for Use Case 1",
+              "navigation": []
+            },
+            {
+              "id": "cb5e2c09-3c97-48c5-b03e-a681d47e8198",
+              "path": "/50-use-case-1/52-verify-credentials",
+              "resource": "/content/50-use-case-1/52-verify-credentials/index.en.md",
+              "title": "Verify Credentials and Enforcement",
+              "navigation": []
+            }
+          ]
+        },
+        {
+          "id": "7d8f235e-face-4310-86c6-c02d3a92d60f",
+          "path": "/60-use-case-2",
+          "resource": "/content/60-use-case-2/index.en.md",
+          "title": "Use Case 2 — OAuth Personalized Read-only",
+          "navigation": [
+            {
+              "id": "869e0140-099f-40b2-8b7e-98e1105f2ae7",
+              "path": "/60-use-case-2/61-oauth-pkce-flow",
+              "resource": "/content/60-use-case-2/61-oauth-pkce-flow/index.en.md",
+              "title": "OAuth Login Flow",
+              "navigation": []
+            },
+            {
+              "id": "c712ae64-1043-4f3e-b723-22d3adc91e6f",
+              "path": "/60-use-case-2/62-configure-oauth-resource-server",
+              "resource": "/content/60-use-case-2/62-configure-oauth-resource-server/index.en.md",
+              "title": "Configure the OAuth Resource Server",
+              "navigation": []
+            },
+            {
+              "id": "b599311a-57cd-4786-9861-2f36a6b66eca",
+              "path": "/60-use-case-2/63-verify-user-access",
+              "resource": "/content/60-use-case-2/63-verify-user-access/index.en.md",
+              "title": "Verify Per-User Data Access",
+              "navigation": []
+            },
+            {
+              "id": "9f2fc9a5-575b-4d18-8a48-fa5cd29e94c2",
+              "path": "/60-use-case-2/64-scope-enforcement",
+              "resource": "/content/60-use-case-2/64-scope-enforcement/index.en.md",
+              "title": "Scope Enforcement (Layer 2)",
+              "navigation": []
+            },
+            {
+              "id": "3c8ea82c-694a-46ca-9a63-974190d304e2",
+              "path": "/60-use-case-2/65-credential-revocation",
+              "resource": "/content/60-use-case-2/65-credential-revocation/index.en.md",
+              "title": "Credential Revocation",
+              "navigation": []
+            }
+          ]
+        },
+        {
+          "id": "5592ddfa-e2ff-4cf6-9aa6-a37d59e51593",
+          "path": "/70-use-case-3",
+          "resource": "/content/70-use-case-3/index.en.md",
+          "title": "Use Case 3: Privileged Action with CIBA",
+          "navigation": [
+            {
+              "id": "033b1dec-271b-4b8e-a8be-39bfd036ab0d",
+              "path": "/70-use-case-3/70-enroll-device",
+              "resource": "/content/70-use-case-3/70-enroll-device/index.en.md",
+              "title": "Enroll Your Device",
+              "navigation": []
+            },
+            {
+              "id": "45e9c96a-1efd-49c4-a86b-ba34d916b82c",
+              "path": "/70-use-case-3/70-test-refund",
+              "resource": "/content/70-use-case-3/70-test-refund/index.en.md",
+              "title": "Test the Refund Flow",
+              "navigation": []
+            },
+            {
+              "id": "f53efa40-48a2-460e-acb6-35f96659c4d9",
+              "path": "/70-use-case-3/71-ciba-approval-flow",
+              "resource": "/content/70-use-case-3/71-ciba-approval-flow/index.en.md",
+              "title": "CIBA Out-of-Band Approval",
+              "navigation": []
+            },
+            {
+              "id": "64a9b332-f490-43bf-8dec-a06b22e76d8f",
+              "path": "/70-use-case-3/72-configure-rar-ceiling",
+              "resource": "/content/70-use-case-3/72-configure-rar-ceiling/index.en.md",
+              "title": "Vault Enforces the RAR Ceiling",
+              "navigation": []
+            },
+            {
+              "id": "f22d2c0a-f87a-4f26-8d21-202f90565f3b",
+              "path": "/70-use-case-3/73-bypass-test",
+              "resource": "/content/70-use-case-3/73-bypass-test/index.en.md",
+              "title": "The Bypass Test",
+              "navigation": []
+            },
+            {
+              "id": "74d90d7e-6ff0-4bb0-84ea-4db652a57cd1",
+              "path": "/70-use-case-3/74-three-plane-audit",
+              "resource": "/content/70-use-case-3/74-three-plane-audit/index.en.md",
+              "title": "Three-Plane Audit Correlation",
+              "navigation": []
+            }
+          ]
+        },
+        {
+          "id": "09e31382-a8c2-4ade-89dd-135993728d33",
+          "path": "/80-cleanup",
+          "resource": "/content/80-cleanup/index.en.md",
+          "title": "Cleanup",
+          "navigation": []
+        },
+        {
+          "id": "eb71eafb-dede-478e-845d-996beec0bc85",
+          "path": "/85-summary",
+          "resource": "/content/85-summary/index.en.md",
+          "title": "Summary",
+          "navigation": []
+        },
+        {
+          "id": "43be526a-d958-4a2c-afa2-72d7999039c1",
+          "path": "/90-resources",
+          "resource": "/content/90-resources/index.en.md",
+          "title": "Resources",
+          "navigation": []
+        },
+        {
+          "id": "09375f09-9322-48ab-bc9b-cb0f5522be4b",
+          "path": "/95-credits",
+          "resource": "/content/95-credits/index.en.md",
+          "title": "Credits",
+          "navigation": []
+        }
+      ]
+    }
+  },
+  "params": {
+    "region": "us-east-1"
+  },
+  "additionalLinks": []
+}
