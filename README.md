@@ -28,6 +28,10 @@ Hosted on Instruqt as a single ~4-hour mega-track. Each attendee receives a fres
 
 ## Quick start (admin)
 
+> [!NOTE]
+> 社内実行用の事前手順
+> 
+
 ```bash
 # 1. Preview the workshop content locally before deploying anything
 bash workshop/scripts/preview.sh
