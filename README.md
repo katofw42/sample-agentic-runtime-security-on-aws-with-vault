@@ -1,5 +1,6 @@
-オリジナルのリポジトリ：
-ハンズオン手順：
+オリジナルのリポジトリ：https://github.com/aws-samples/sample-agentic-runtime-security-on-aws-with-vault
+
+ハンズオン手順：https://catalog.us-east-1.prod.workshops.aws/workshops/9d6a0b3d-9ea2-47a2-8ca4-40168cadd531/en-US
 
 ## EC2で作業したい人向け用の手順
 
