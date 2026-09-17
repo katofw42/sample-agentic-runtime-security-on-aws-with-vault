@@ -8,7 +8,9 @@
 
 作業用なのでスペックは何でもいいです。SSHでログインさえできればOK
 
-### 2. 以下のコマンドでログインする([Tooling Prerequisites](https://catalog.us-east-1.prod.workshops.aws/workshops/9d6a0b3d-9ea2-47a2-8ca4-40168cadd531/en-US/20-prerequisites/21-aws-account#tooling-prerequisites)にあるやつの一括インストールスクリプトです)
+### 2. 以下のコマンドでログインする
+
+[Tooling Prerequisites](https://catalog.us-east-1.prod.workshops.aws/workshops/9d6a0b3d-9ea2-47a2-8ca4-40168cadd531/en-US/20-prerequisites/21-aws-account#tooling-prerequisites)にあるやつの一括インストールスクリプトです
 
 初回
 ```bash
