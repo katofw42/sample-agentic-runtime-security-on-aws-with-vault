@@ -61,7 +61,7 @@ EOF
 
 2回目以降
 ```bash
-ssh USER@HOST(EC2) 'bash -s' <<'EOF'
+ssh -t user@host 'bash -s; exec bash -l' <<'EOF'
 set -euo pipefail
 
 # 自分のdoormat credentialに置き換え
