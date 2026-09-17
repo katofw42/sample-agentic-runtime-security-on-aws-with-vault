@@ -53,6 +53,8 @@ rm -f /tmp/kubectl
 
 curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
+git clone https://github.com/katofw42/sample-agentic-runtime-security-on-aws-with-vault
+
 aws --version
 terraform -version
 kubectl version --client
