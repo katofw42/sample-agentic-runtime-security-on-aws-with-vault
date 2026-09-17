@@ -4,10 +4,11 @@
 
 ## EC2で作業したい人向け用の手順
 
-1. EC2をAWSに作成する
+### 1. EC2をAWSに作成する
+
 作業用なのでスペックは何でもいいです。SSHでログインさえできればOK
 
-2. 以下のコマンドでログインする
+### 2. 以下のコマンドでログインする([Tooling Prerequisites](https://catalog.us-east-1.prod.workshops.aws/workshops/9d6a0b3d-9ea2-47a2-8ca4-40168cadd531/en-US/20-prerequisites/21-aws-account#tooling-prerequisites)にあるやつの一括インストールスクリプトです)
 
 初回
 ```bash
@@ -72,20 +73,22 @@ export http_proxy=http://localhost:8888
 EOF
 ```
 
-3. 手元のmac/windowsでプロキシを貼る
+### 3. 手元のmac/windowsでプロキシを貼る(別タブを開いて実行)
+
 macの場合
 ```bash
 brew install tinyproxy
 tinyproxy -c /opt/homebrew/etc/tinyproxy/tinyproxy.conf
 ```
 
-ちゃんとプロキシが貼れているかは、EC2で以下を実行したIPアドレスと、直接https://checkip.amazonaws.comにアクセスしたIPアドレスが一致していればOK
+ちゃんとプロキシが貼れているかは、EC2で以下を実行したIPアドレスと、直接 https://checkip.amazonaws.com にアクセスしたIPアドレスが一致していればOK
 ```bash
 curl --proxy http://localhost:8888 https://checkip.amazonaws.com
 ```
 
 
-4. EC2の中から作業開始
+### 4. EC2の中から作業開始
+
 リポジトリはクローン済みなので、
 ```bash
 cd sample-agentic-runtime-security-on-aws-with-vault
