@@ -17,6 +17,7 @@
 ssh ⚠️⚠️USER@HOST(EC2)⚠️⚠️ 'bash -s' <<'EOF'
 set -euo pipefail
 
+cat >> ~/.bashrc <<'ENVEOF'
 # 自分のdoormat credentialに置き換え
 ⚠️⚠️export AWS_ACCESS_KEY_ID=...
 ⚠️⚠️export AWS_SECRET_ACCESS_KEY=...
@@ -25,6 +26,8 @@ set -euo pipefail
 # プロキシ設定
 export https_proxy=http://localhost:8888
 export http_proxy=http://localhost:8888
+ENVEOF
+
 
 ARCH=$(uname -m)
 [ "$ARCH" = "aarch64" ] && DL_ARCH="arm64" || DL_ARCH="amd64"
@@ -61,19 +64,10 @@ EOF
 
 2回目以降
 ```bash
-ssh -t user@host 'bash -s; exec bash -l' <<'EOF'
-set -euo pipefail
-
-# 自分のdoormat credentialに置き換え
-export AWS_ACCESS_KEY_ID=...
-export AWS_SECRET_ACCESS_KEY=...
-export AWS_SESSION_TOKEN=...
-
-# プロキシ設定
-export https_proxy=http://localhost:8888
-export http_proxy=http://localhost:8888
-EOF
+ssh ⚠️⚠️USER@HOST(EC2)⚠️⚠️ 
 ```
+で普通にログイン
+
 
 ### 3. 手元のmac/windowsでプロキシを貼る(別タブを開いて実行)
 
