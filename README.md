@@ -66,7 +66,7 @@ EOF
 
 2回目以降
 ```bash
-ssh ⚠️⚠️USER@HOST(EC2)⚠️⚠️ 
+ssh -R 8888:localhost:8888 ⚠️⚠️USER@HOST(EC2)⚠️⚠️ 
 ```
 で普通にログイン
 
